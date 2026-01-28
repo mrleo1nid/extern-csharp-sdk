@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -27,7 +27,11 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
         /// <param name="meta">Метаинформация DraftsBuilder</param>
         /// <param name="timeout"></param>
         /// <returns>DraftsBuilder</returns>
-        Task<DraftsBuilder> CreateDraftsBuilderAsync(Guid accountId, DraftsBuilderMetaRequest meta, TimeSpan? timeout = null);
+        Task<DraftsBuilder> CreateDraftsBuilderAsync(
+            Guid accountId,
+            DraftsBuilderMetaRequest meta,
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение DraftsBuilder по идентификатору
@@ -36,7 +40,11 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
         /// <param name="draftsBuilderId">Идентификатор DraftsBuilder</param>
         /// <param name="timeout"></param>
         /// <returns>DraftsBuilder</returns>
-        Task<DraftsBuilder> GetDraftsBuilderAsync(Guid accountId, Guid draftsBuilderId, TimeSpan? timeout = null);
+        Task<DraftsBuilder> GetDraftsBuilderAsync(
+            Guid accountId,
+            Guid draftsBuilderId,
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение DraftsBuilder по идентификатору
@@ -45,7 +53,11 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
         /// <param name="draftsBuilderId">Идентификатор DraftsBuilder</param>
         /// <param name="timeout"></param>
         /// <returns>DraftsBuilder или null, если DraftsBuilder с указанными идентификаторами не существует</returns>
-        Task<DraftsBuilder?> TryGetDraftsBuilderAsync(Guid accountId, Guid draftsBuilderId, TimeSpan? timeout = null);
+        Task<DraftsBuilder?> TryGetDraftsBuilderAsync(
+            Guid accountId,
+            Guid draftsBuilderId,
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Удаление DraftsBuilder
@@ -54,7 +66,11 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
         /// <param name="draftsBuilderId">Идентификатор DraftsBuilder</param>
         /// <param name="timeout"></param>
         /// <returns>Возвращает true, если конструктор черновика успешно удален; false, если конструктор черновика не существует.</returns>
-        Task<bool> DeleteDraftsBuilderAsync(Guid accountId, Guid draftsBuilderId, TimeSpan? timeout = null);
+        Task<bool> DeleteDraftsBuilderAsync(
+            Guid accountId,
+            Guid draftsBuilderId,
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение метаинформации DraftsBuilder
@@ -63,7 +79,11 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
         /// <param name="draftsBuilderId">Идентификатор DraftsBuilder</param>
         /// <param name="timeout"></param>
         /// <returns>Метаинформация DraftsBuilder</returns>
-        Task<DraftsBuilderMeta> GetDraftsBuilderMetaAsync(Guid accountId, Guid draftsBuilderId, TimeSpan? timeout = null);
+        Task<DraftsBuilderMeta> GetDraftsBuilderMetaAsync(
+            Guid accountId,
+            Guid draftsBuilderId,
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Редактирование метаинформации DraftsBuilder
@@ -77,7 +97,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid accountId,
             Guid draftsBuilderId,
             DraftsBuilderMetaRequest meta,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Сборка содержимого DraftsBuilder в черновик
@@ -86,7 +107,11 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
         /// <param name="draftsBuilderId">Идентификатор DraftsBuilder</param>
         /// <param name="timeout"></param>
         /// <returns>Результат сборки</returns>
-        Task<DraftsBuilderBuildResult> BuildDraftsAsync(Guid accountId, Guid draftsBuilderId, TimeSpan? timeout = null);
+        Task<DraftsBuilderBuildResult> BuildDraftsAsync(
+            Guid accountId,
+            Guid draftsBuilderId,
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Сборка содержимого DraftsBuilder в черновик
@@ -98,7 +123,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
         Task<ApiTaskResult<DraftsBuilderBuildResult>> StartBuildDraftsAsync(
             Guid accountId,
             Guid draftsBuilderId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Проверка статуса задачи сборки DraftsBuilder
@@ -112,7 +138,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid accountId,
             Guid draftsBuilderId,
             Guid taskId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Создание документа в DraftsBuilder
@@ -126,7 +153,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid accountId,
             Guid draftsBuilderId,
             DraftsBuilderDocumentMetaRequest meta,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение списка документов DraftsBuilder
@@ -138,7 +166,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
         Task<IReadOnlyCollection<DraftsBuilderDocument>> GetDocumentsAsync(
             Guid accountId,
             Guid draftsBuilderId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение документа по идентификатору
@@ -152,7 +181,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid accountId,
             Guid draftsBuilderId,
             Guid documentId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение документа по идентификатору
@@ -166,7 +196,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid accountId,
             Guid draftsBuilderId,
             Guid documentId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Удаление документа в DraftBuilder
@@ -176,7 +207,12 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
         /// <param name="documentId">Идентификатор документа</param>
         /// <param name="timeout"></param>
         /// <returns>Возвращает true, если документ успешно удален; false, если документ не существует.</returns>
-        Task<bool> DeleteDocumentAsync(Guid accountId, Guid draftsBuilderId, Guid documentId, TimeSpan? timeout = null);
+        Task<bool> DeleteDocumentAsync(
+            Guid accountId,
+            Guid draftsBuilderId,
+            Guid documentId,
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение метаинформации документа
@@ -190,7 +226,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid accountId,
             Guid draftsBuilderId,
             Guid documentId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение метаинформации документа
@@ -204,7 +241,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid accountId,
             Guid draftsBuilderId,
             Guid documentId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Редактирование метаинформации документа
@@ -220,7 +258,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid draftsBuilderId,
             Guid documentId,
             DraftsBuilderDocumentMetaRequest meta,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Создание файла в документе
@@ -236,7 +275,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid draftsBuilderId,
             Guid documentId,
             DraftsBuilderFileRequest fileRequest,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение списка файлов в документе DraftsBuilder
@@ -250,7 +290,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid accountId,
             Guid draftsBuilderId,
             Guid documentId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение файла по идентификатору
@@ -266,7 +307,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid draftsBuilderId,
             Guid documentId,
             Guid fileId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение файла по идентификатору
@@ -282,7 +324,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid draftsBuilderId,
             Guid documentId,
             Guid fileId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Редактирование файла и подписи в документе
@@ -300,7 +343,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid documentId,
             Guid fileId,
             DraftsBuilderFileRequest fileRequest,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Удаление файла документа
@@ -316,7 +360,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid draftsBuilderId,
             Guid documentId,
             Guid fileId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение метаинформации файла
@@ -332,7 +377,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid draftsBuilderId,
             Guid documentId,
             Guid fileId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение метаинформации файла
@@ -348,7 +394,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid draftsBuilderId,
             Guid documentId,
             Guid fileId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Редактирование метаинформации файла
@@ -366,7 +413,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid documentId,
             Guid fileId,
             DraftsBuilderFileMetaRequest meta,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение подписи файла
@@ -382,7 +430,8 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid draftsBuilderId,
             Guid documentId,
             Guid fileId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
 
         /// <summary>
         /// Получение подписи файла
@@ -398,6 +447,26 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.DraftsBuilders
             Guid draftsBuilderId,
             Guid documentId,
             Guid fileId,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null
+        );
+
+        /// <summary>
+        /// Генерация файла документа
+        /// </summary>
+        /// <param name="accountId">Идентификатор учетной записи</param>
+        /// <param name="draftsBuilderId">Идентификатор DraftsBuilder</param>
+        /// <param name="documentId">Идентификатор документа в DraftsBuilder</param>
+        /// <param name="version">Версия контракта</param>
+        /// <param name="requestBody">Тело запроса в формате JSON</param>
+        /// <param name="timeout"></param>
+        /// <returns>Файл DraftsBuilder</returns>
+        Task<DraftsBuilderDocumentFile> GenerateFilesAsync(
+            Guid accountId,
+            Guid draftsBuilderId,
+            Guid documentId,
+            int version,
+            string requestBody,
+            TimeSpan? timeout = null
+        );
     }
 }

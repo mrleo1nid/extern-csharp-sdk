@@ -6,14 +6,18 @@ using Kontur.Extern.Api.Client.Attributes;
 using Kontur.Extern.Api.Client.Common;
 using Kontur.Extern.Api.Client.Models.DraftsBuilders.DocumentFiles;
 
-
 namespace Kontur.Extern.Api.Client.Paths
 {
     [PublicAPI]
     [ClientDocumentationSection]
     public readonly struct DraftBuilderDocumentFileListPath
     {
-        public DraftBuilderDocumentFileListPath(Guid accountId, Guid draftBuilderId, Guid documentId, IExternClientServices services)
+        public DraftBuilderDocumentFileListPath(
+            Guid accountId,
+            Guid draftBuilderId,
+            Guid documentId,
+            IExternClientServices services
+        )
         {
             AccountId = accountId;
             DraftBuilderId = draftBuilderId;
@@ -26,28 +30,69 @@ namespace Kontur.Extern.Api.Client.Paths
         public Guid DocumentId { get; }
         public IExternClientServices Services { get; }
 
-        public DraftBuilderDocumentFilePath WithId(Guid fileId) => new(AccountId, DraftBuilderId, DocumentId, fileId, Services);
+        public DraftBuilderDocumentFilePath WithId(Guid fileId) =>
+            new(AccountId, DraftBuilderId, DocumentId, fileId, Services);
 
         public async Task<DraftsBuilderDocumentFile> SetFileAsync( //todo перенести в DraftBuilderDocumentFilePath?
             Kontur.Extern.Api.Client.Model.DraftBuilders.DraftsBuilderDocumentFile file,
             TimeSpan? uploadTimeout = null,
-            TimeSpan? putTimeout = null)
+            TimeSpan? putTimeout = null
+        )
         {
             var apiClient = Services.Api;
             var uploader = Services.ContentService;
             var crypt = Services.Crypt;
 
-            var documentRequest = await file
-                .CreateSignedRequestAsync(AccountId, uploader, crypt, uploadTimeout).ConfigureAwait(false);
+            var documentRequest = await file.CreateSignedRequestAsync(
+                    AccountId,
+                    uploader,
+                    crypt,
+                    uploadTimeout
+                )
+                .ConfigureAwait(false);
 
-            return await apiClient.DraftsBuilder
-                .UpdateFileAsync(AccountId, DraftBuilderId, DocumentId, file.FileId, documentRequest, putTimeout).ConfigureAwait(false);
+            return await apiClient
+                .DraftsBuilder.UpdateFileAsync(
+                    AccountId,
+                    DraftBuilderId,
+                    DocumentId,
+                    file.FileId,
+                    documentRequest,
+                    putTimeout
+                )
+                .ConfigureAwait(false);
         }
 
-        public Task<IReadOnlyCollection<DraftsBuilderDocumentFile>> ListAsync(TimeSpan? timeout = null)
+        public Task<IReadOnlyCollection<DraftsBuilderDocumentFile>> ListAsync(
+            TimeSpan? timeout = null
+        )
         {
             var apiClient = Services.Api;
-            return apiClient.DraftsBuilder.GetFilesAsync(AccountId, DraftBuilderId, DocumentId, timeout);
+            return apiClient.DraftsBuilder.GetFilesAsync(
+                AccountId,
+                DraftBuilderId,
+                DocumentId,
+                timeout
+            );
+        }
+
+        public async Task<DraftsBuilderDocumentFile> GenerateFilesAsync(
+            int version,
+            string requestBody,
+            TimeSpan? timeout = null
+        )
+        {
+            var apiClient = Services.Api;
+            return await apiClient
+                .DraftsBuilder.GenerateFilesAsync(
+                    AccountId,
+                    DraftBuilderId,
+                    DocumentId,
+                    version,
+                    requestBody,
+                    timeout
+                )
+                .ConfigureAwait(false);
         }
     }
 }
