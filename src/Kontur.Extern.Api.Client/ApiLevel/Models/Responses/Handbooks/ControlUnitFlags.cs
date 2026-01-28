@@ -3,20 +3,18 @@
 namespace Kontur.Extern.Api.Client.ApiLevel.Models.Responses.Handbooks;
 
 [PublicAPI]
-public enum ControlUnitFlags
+public class ControlUnitFlags
 {
-    Unknown = -1,
-    IsActive,
-    IsTest,
-    Gp3IsOn,
-    PfrIosIsOn,
-    PfrIosFioSnilsIsOn,
-    PfrPensionIsOn,
-    PfrLettersOnly,
-    FnsLettersOnly,
-    FnsDemandsOnly,
-    FnsSubmissionsOnly,
-    Gost2012,
-    CempIsOn,
-    BusinessRegistration
+    /// <summary>
+    /// Указывает на активность контролирующего органа
+    /// </summary>
+    public bool IsActive { get; set; }
+    /// <summary>
+    /// Указывает на тестовый статус контролирующего органа
+    /// </summary>
+    public bool IsTest { get; set; }
+    /// <summary>
+    /// ФНС поддерживает регистрацию бизнеса
+    /// </summary>
+    public bool BusinessRegistration { get; set; }
 }

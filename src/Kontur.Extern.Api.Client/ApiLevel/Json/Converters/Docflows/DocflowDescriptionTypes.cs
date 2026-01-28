@@ -56,12 +56,28 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Json.Converters.Docflows
             [DocflowType.FssSedoBillingInformationDemand] = typeof(FssSedoBillingInformationDemandDescription),
             [DocflowType.FssSedoBillingInformation] = typeof(FssSedoBillingInformationDescription),
             [DocflowType.FssSedoBabyCareVacationCloseNotice] = typeof(FssSedoBabyCareVacationCloseNoticeDescription),
+            [DocflowType.FssSedoDisabilityChildrenDemand] = typeof(FssSedoDisabilityChildrenDemandDescription),
             [DocflowType.FssSedoBenefitPaymentStatusNotice] = typeof(FssSedoBenefitPaymentStatusNoticeDescription),
+            [DocflowType.FssSedoProactiveExpireNotice] = typeof(FssSedoProactiveExpireNoticeDescription),
             [DocflowType.FssSedoError] = typeof(FssSedoErrorDescription),
             [DocflowType.FssSedoEmployeeSalaryInformation] = typeof(FssSedoEmployeeSalaryInformationDescription),
+            [DocflowType.FssSedoAppealReply] = typeof(FssSedoAppealReplyDescription),
+            [DocflowType.FssSedoAppeal] = typeof(FssSedoAppealDescription),
+            [DocflowType.FssSedoOvedConfirmation] = typeof(FssSedoOvedConfirmationDescription),
+            [DocflowType.FssSedoJudicialRestriction] = typeof(FssSedoJudicialRestrictionDescription),
+            [DocflowType.FssSedoJudicialRestrictionReply] = typeof(FssSedoJudicialRestrictionReplyDescription),
+            [DocflowType.FssSedoOvedConfirmation] = typeof(FssSedoOvedConfirmationDescription),
             [DocflowType.OvedConfirmation] = typeof(OvedConfirmationDescription),
             [DocflowType.CbrfReport] = typeof(CbrfReportDescription),
-            [DocflowType.BusinessRegistration] = typeof(BusinessRegistrationDescription)
+            [DocflowType.BusinessRegistration] = typeof(BusinessRegistrationDescription),
+            [DocflowType.FssSedoBroadcastMessage] = typeof(FssSedoBroadcastMessageDescription),
+            [DocflowType.FssSedoPaymentDetailsDemand] = typeof(FssSedoPaymentDetailsDemandDescription),
+            [DocflowType.FssSedoPaymentDetailsDemandReply] = typeof(FssSedoPaymentDetailsDemandReplyDescription),
+            [DocflowType.FssSedoAdditionalVacationStatement] = typeof(FssSedoAdditionalVacationStatementDescription),
+            [DocflowType.FssSedoAdditionalVacationStatementNeedDoc] = typeof(FssSedoAdditionalVacationStatementNeedDocDescription),
+            [DocflowType.FssSedoAdditionalVacationStatementDocs] = typeof(FssSedoAdditionalVacationStatementDocsDescription),
+            [DocflowType.FssWarrantManagement] = typeof(FssWarrantManagementDescription),
+            [DocflowType.FssSedoProactiveSalaryNotification] = typeof(FssSedoProactiveSalaryNotificationDescription)
         };
 
         public static Type? TryGetDescriptionType(DocflowType docflowType) =>

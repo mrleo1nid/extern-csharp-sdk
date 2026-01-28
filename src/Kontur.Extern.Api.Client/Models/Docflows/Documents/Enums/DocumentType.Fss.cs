@@ -77,6 +77,50 @@ namespace Kontur.Extern.Api.Client.Models.Docflows.Documents.Enums
         }
 
         /// <summary>
+        /// Подтверждение основного вида экономической деятельности на СЭДО
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoOvedConfirmation
+        {
+            /// <summary>
+            /// Запрос на отправку сообщения "Заявление на подтверждение основного вида экономической деятельности"
+            /// </summary>
+            public static readonly DocumentType Request = "urn:document:fss-sedo-oved-confirmation-request";
+            /// <summary>
+            /// Сообщение "Заявление на подтверждение основного вида экономической деятельности" до создания SOAP-запроса
+            /// </summary>
+            public static readonly DocumentType RequestFuf = "urn:document:fss-sedo-oved-confirmation-request-fuf";
+            /// <summary>
+            /// Результат отправки сообщения на портал
+            /// </summary>
+            public static readonly DocumentType ReceptionResult = "urn:document:fss-sedo-oved-confirmation-reception-result";
+            /// <summary>
+            /// Сообщение "уведомление об изменении статуса запроса на подтверждение основного вида экономической деятельности"
+            /// </summary>
+            public static readonly DocumentType ResultDocument = "urn:document:fss-sedo-oved-confirmation-result-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static readonly DocumentType ExchangeError = "urn:document:fss-sedo-oved-confirmation-exchange-error";
+            /// <summary>
+            /// Ошибка обработки
+            /// </summary>
+            public static readonly DocumentType ErrorMessage = "urn:document:fss-sedo-oved-confirmation-error-message";
+            /// <summary>
+            /// Приложение
+            /// </summary>
+            public static readonly DocumentType Attachment = "urn:document:fss-sedo-oved-confirmation-attachment";
+            /// <summary>
+            /// Сообщение "Уведомление о размере страховых взносов"
+            /// </summary>
+            public static readonly DocumentType InsurancePremiumsAmountNotificationDocument = "urn:document:fss-sedo-oved-confirmation-insurance-premiums-amount-notification-document";
+            /// <summary>
+            /// Квитанция о прочтении (используется в методе генерации ответного документа)
+            /// </summary>
+            public static readonly DocumentType ReadReceipt = "urn:document:fss-sedo-oved-confirmation-read-receipt";
+        }
+
+        /// <summary>
         /// Подписка оператора на документооборот с ФСС по абоненту
         /// </summary>
         [PublicAPI]
@@ -553,6 +597,10 @@ namespace Kontur.Extern.Api.Client.Models.Docflows.Documents.Enums
             /// Сообщение "Результат создания/отзыва доверенности"
             /// </summary>
             public static readonly DocumentType ResponseMessage = "urn:document:fss-warrant-management-response-message";
+            /// <summary>
+            /// Квитанция о прочтении (используется в методе генерации ответного документа)
+            /// </summary>
+            public static readonly DocumentType ReadReceipt = "urn:document:fss-warrant-management-read-receipt";
         }
 
         /// <summary>
@@ -768,6 +816,118 @@ namespace Kontur.Extern.Api.Client.Models.Docflows.Documents.Enums
         }
 
         /// <summary>
+        /// Ответ страхователя на обращение СФР
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoAppealReply
+        {
+            /// <summary>
+            /// Запрос на отправку сообщения "Ответ страхователя на обращение СФР"
+            /// </summary>
+            public static readonly DocumentType Request = "urn:document:fss-sedo-appeal-reply-request";
+            /// <summary>
+            /// Квитанция о прочтении (используется в методе генерации ответного документа)
+            /// </summary>
+            public static readonly DocumentType ReadReceipt = "urn:document:fss-sedo-appeal-reply-read-receipt";
+            /// <summary>
+            /// Результат отправки сообщения на портал
+            /// </summary>
+            public static readonly DocumentType ReceptionResult = "urn:document:fss-sedo-appeal-reply-reception-result";
+            /// <summary>
+            /// Сообщение "Уведомление о подтверждении получения Фондом сообщения от Страхователя"
+            /// </summary>
+            public static readonly DocumentType ResultDocument = "urn:document:fss-sedo-appeal-reply-result-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static readonly DocumentType ExchangeError = "urn:document:fss-sedo-appeal-reply-exchange-error";
+            /// <summary>
+            /// Ошибка обработки
+            /// </summary>
+            public static readonly DocumentType ErrorMessage = "urn:document:fss-sedo-appeal-reply-error-message";
+            /// <summary>
+            /// Приложение
+            /// </summary>
+            public static readonly DocumentType Attachment = "urn:document:fss-sedo-appeal-reply-attachment";
+        }
+
+        /// <summary>
+        /// Обращение СФР к страхователю
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoAppeal
+        {
+            /// <summary>
+            /// Запрос на получение документов
+            /// </summary>
+            public static readonly DocumentType RequestMessage = "urn:document:fss-sedo-appeal-request-message";
+            /// <summary>
+            /// Документ "Обращение СФР к страхователю"
+            /// </summary>
+            public static readonly DocumentType Document = "urn:document:fss-sedo-appeal-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static readonly DocumentType ExchangeError = "urn:document:fss-sedo-appeal-exchange-error";
+        }
+
+        /// <summary>
+        /// Уведомление о непоступлении ответа на запрос в срок
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoProactiveExpireNotice
+        {
+            /// <summary>
+            /// Запрос на получение документа
+            /// </summary>
+            public static readonly DocumentType RequestMessage = "urn:document:fss-sedo-proactive-expire-notice-request-message";
+            /// <summary>
+            /// Документ "Уведомление о непоступлении ответа на запрос в срок"
+            /// </summary>
+            public static readonly DocumentType Document = "urn:document:fss-sedo-proactive-expire-notice-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static readonly DocumentType ExchangeError = "urn:document:fss-sedo-proactive-expire-notice-exchange-error";
+        }
+
+        /// <summary>
+        /// Заявление о возмещении расходов на оплату дополнительных выходных дней для ухода за детьми-инвалидами
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoDisabilityChildrenDemand
+        {
+            /// <summary>
+            /// Запрос на отправку сообщения "Заявление о возмещении расходов на оплату дополнительных выходных дней для ухода за детьми-инвалидами"
+            /// </summary>
+            public static readonly DocumentType Request = "urn:document:fss-sedo-disability-children-demand-request";
+            /// <summary>
+            /// Результат отправки сообщения на портал
+            /// </summary>
+            public static readonly DocumentType ReceptionResult = "urn:document:fss-sedo-disability-children-demand-reception-result";
+            /// <summary>
+            /// Сообщение "Результат обработки заявления о возмещении расходов на оплату дополнительных выходных дней для ухода за детьми-инвалидами"
+            /// </summary>
+            public static readonly DocumentType ResultDocument = "urn:document:fss-sedo-disability-children-demand-result-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static readonly DocumentType ExchangeError = "urn:document:fss-sedo-disability-children-demand-exchange-error";
+            /// <summary>
+            /// Ошибка обработки
+            /// </summary>
+            public static readonly DocumentType ErrorMessage = "urn:document:fss-sedo-disability-children-demand-error-message";
+            /// <summary>
+            /// Сообщение "Решение об отказе в возмещении расходов на оплату дополнительных выходных дней для ухода за детьми-инвалидами"
+            /// </summary>
+            public static readonly DocumentType DeclineNoticeDocument = "urn:document:fss-sedo-disability-children-demand-decline-notice-document";
+            /// <summary>
+            /// Квитанция о прочтении (используется в методе генерации ответного документа)
+            /// </summary>
+            public static readonly DocumentType ReadReceipt = "urn:document:fss-sedo-disability-children-demand-read-receipt";
+        }
+
+        /// <summary>
         /// Уведомление о статусе выплаты пособия
         /// </summary>
         [PublicAPI]
@@ -817,6 +977,233 @@ namespace Kontur.Extern.Api.Client.Models.Docflows.Documents.Enums
             /// Ошибка обработки
             /// </summary>
             public static readonly DocumentType ErrorMessage = "urn:document:fss-sedo-employee-salary-information-error-message";
+        }
+
+        /// <summary>
+        /// Широковещательное сообщение СЭДО от СФР
+        /// </summary>
+        public static class FssSedoBroadcastMessage
+        {
+            /// <summary>
+            /// Документ "Широковещательное сообщение СЭДО от СФР"
+            /// </summary>
+            public static readonly DocumentType Document = "urn:document:fss-sedo-broadcast-message-document";
+        }
+
+        /// <summary>
+        /// Запрос платежных реквизитов
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoPaymentDetailsDemand
+        {
+            /// <summary>
+            /// Запрос на получение документов
+            /// </summary>
+            public static DocumentType RequestMessage = "urn:document:fss-sedo-payment-details-demand-request-message";
+            /// <summary>
+            /// Документ "Запрос платежных реквизитов"
+            /// </summary>
+            public static DocumentType Document = "urn:document:fss-sedo-payment-details-demand-document";
+            /// <summary>
+            /// Квитанция о прочтении (используется в методе генерации ответного документа)
+            /// </summary>
+            public static readonly DocumentType ReadReceipt = "urn:document:fss-sedo-payment-details-demand-read-receipt";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static DocumentType ExchangeError = "urn:document:fss-sedo-payment-details-demand-exchange-error";
+        }
+
+        /// <summary>
+        /// Ответ на запрос платежных реквизитов
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoPaymentDetailsDemandReply
+        {
+            /// <summary>
+            /// Запрос на отправку сообщения "Ответ на запрос платежных реквизитов"
+            /// </summary>
+            public static DocumentType Request = "urn:document:fss-sedo-payment-details-demand-reply-request";
+            /// <summary>
+            /// Результат отправки сообщения на портал
+            /// </summary>
+            public static DocumentType ReceptionResult = "urn:document:fss-sedo-payment-details-demand-reply-reception-result";
+            /// <summary>
+            /// Сообщение "Результат ответа на запрос платежных реквизитов"
+            /// </summary>
+            public static DocumentType ResultDocument = "urn:document:fss-sedo-payment-details-demand-reply-result-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static DocumentType ExchangeError = "urn:document:fss-sedo-payment-details-demand-reply-exchange-error";
+            /// <summary>
+            /// Ошибка обработки
+            /// </summary>
+            public static DocumentType ErrorMessage = "urn:document:fss-sedo-payment-details-demand-reply-error-message";
+            /// <summary>
+            /// Квитанция о прочтении (используется в методе генерации ответного документа)
+            /// </summary>
+            public static readonly DocumentType ReadReceipt = "urn:document:fss-sedo-payment-details-demand-reply-read-receipt";
+        }
+
+        /// <summary>
+        /// Заявление на оплату санаторно-курортного лечения
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoAdditionalVacationStatement
+        {
+            /// <summary>
+            /// Запрос на отправку сообщения "Сведения для оплаты отпуска застрахованного лица"
+            /// </summary>
+            public static DocumentType Request { get; } = "urn:document:fss-sedo-additional-vacation-statement-request";
+            /// <summary>
+            /// Результат отправки сообщения на портал
+            /// </summary>
+            public static DocumentType ReceptionResult { get; } = "urn:document:fss-sedo-additional-vacation-statement-reception-result";
+            /// <summary>
+            /// Сообщение "Результат обработки сведений для оплаты отпуска застрахованного лица"
+            /// </summary>
+            public static DocumentType ReceivedDocument { get; } = "urn:document:fss-sedo-additional-vacation-statement-received-document";
+            /// <summary>
+            /// Сообщение "Результат рассмотрения сведений для оплаты отпуска застрахованного лица"
+            /// </summary>
+            public static DocumentType ResultDocument { get; } = "urn:document:fss-sedo-additional-vacation-statement-result-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static DocumentType ExchangeError { get; } = "urn:document:fss-sedo-additional-vacation-statement-exchange-error";
+            /// <summary>
+            /// Ошибка обработки
+            /// </summary>
+            public static DocumentType ErrorMessage { get; } = "urn:document:fss-sedo-additional-vacation-statement-error-message";
+            /// <summary>
+            /// Квитанция о прочтении (используется в методе генерации ответного документа)
+            /// </summary>
+            public static readonly DocumentType ReadReceipt = "urn:document:fss-sedo-additional-vacation-statement-read-receipt";
+        }
+
+        /// <summary>
+        /// Запрос недостающих документов для оплаты отпуска застрахованного лица
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoAdditionalVacationStatementNeedDoc
+        {
+            /// <summary>
+            /// Запрос на получение документов
+            /// </summary>
+            public static DocumentType RequestMessage { get; } = "urn:document:fss-sedo-additional-vacation-statement-need-doc-request-message";
+            /// <summary>
+            /// Документ "Запрос недостающих документов для оплаты отпуска застрахованного лица"
+            /// </summary>
+            public static DocumentType Document { get; } = "urn:document:fss-sedo-additional-vacation-statement-need-doc-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static DocumentType ExchangeError { get; } = "urn:document:fss-sedo-additional-vacation-statement-need-doc-exchange-error";
+            /// <summary>
+            /// Квитанция о прочтении (используется в методе генерации ответного документа)
+            /// </summary>
+            public static readonly DocumentType ReadReceipt = "urn:document:fss-sedo-additional-vacation-statement-need-doc-read-receipt";
+        }
+
+        /// <summary>
+        /// Направление дополнительных документов по сведениям для оплаты отпуска застрахованного лица
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoAdditionalVacationStatementDocs
+        {
+            /// <summary>
+            /// Запрос на отправку сообщения "Направление дополнительных документов по сведениям для оплаты отпуска застрахованного лица"
+            /// </summary>
+            public static readonly DocumentType Request = "urn:document:fss-sedo-additional-vacation-statement-docs-request";
+            /// <summary>
+            /// Результат отправки сообщения на портал
+            /// </summary>
+            public static readonly DocumentType ReceptionResult = "urn:document:fss-sedo-additional-vacation-statement-docs-reception-result";
+            /// <summary>
+            /// Сообщение "Результат обработки сведений для оплаты отпуска застрахованного лица"
+            /// </summary>
+            public static readonly DocumentType ResultDocument = "urn:document:fss-sedo-additional-vacation-statement-docs-result-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static readonly DocumentType ExchangeError = "urn:document:fss-sedo-additional-vacation-statement-docs-exchange-error";
+            /// <summary>
+            /// Ошибка обработки
+            /// </summary>
+            public static readonly DocumentType ErrorMessage = "urn:document:fss-sedo-additional-vacation-statement-docs-error-message";
+            /// <summary>
+            /// Квитанция о прочтении (используется в методе генерации ответного документа)
+            /// </summary>
+            public static readonly DocumentType ReadReceipt = "urn:document:fss-sedo-additional-vacation-statement-docs-read-receipt";
+        }
+
+        /// <summary>
+        /// Сведения, необходимые для исчисления страхователем первых 3 дней пособия по временной нетрудоспособности
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoProactiveSalaryNotification
+        {
+            /// <summary>
+            /// Запрос на получение документов
+            /// </summary>
+            public static readonly DocumentType RequestMessage = "urn:document:fss-sedo-proactive-salary-notification-request-message";
+            /// <summary>
+            /// Документ "Сведения, необходимые для исчисления страхователем первых 3 дней пособия по временной нетрудоспособности"
+            /// </summary>
+            public static readonly DocumentType Document = "urn:document:fss-sedo-proactive-salary-notification-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static readonly DocumentType ExchangeError = "urn:document:fss-sedo-proactive-salary-notification-exchange-error";
+        }
+
+        /// <summary>
+        /// Запрос информации о судебном ограничении
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoJudicialRestriction
+        {
+            /// <summary>
+            /// Запрос на получение документов
+            /// </summary>
+            public static DocumentType RequestMessage { get; } = "urn:document:fss-sedo-judicial-restriction-request-message";
+            /// <summary>
+            /// Документ "Запрос информации о судебном ограничении"
+            /// </summary>
+            public static DocumentType Document { get; } = "urn:document:fss-sedo-judicial-restriction-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static DocumentType ExchangeError { get; } = "urn:document:fss-sedo-judicial-restriction-exchange-error";
+        }
+
+        /// <summary>
+        /// Ответ на запрос информации о судебном ограничении
+        /// </summary>
+        [PublicAPI]
+        public static class FssSedoJudicialRestrictionReply
+        {
+            /// <summary>
+            /// Запрос на отправку сообщения "Ответ на запрос информации о судебном ограничении"
+            /// </summary>
+            public static DocumentType Request { get; } = "urn:document:fss-sedo-judicial-restriction-reply-request";
+            /// <summary>
+            /// Результат отправки сообщения на портал
+            /// </summary>
+            public static DocumentType ReceptionResult { get; } = "urn:document:fss-sedo-judicial-restriction-reply-reception-result";
+            /// <summary>
+            /// Сообщение "Результат ответа на запрос информации о судебном ограничении"
+            /// </summary>
+            public static DocumentType ResultDocument { get; } = "urn:document:fss-sedo-judicial-restriction-reply-result-document";
+            /// <summary>
+            /// Ошибка взаимодействия с СЭДО
+            /// </summary>
+            public static DocumentType ExchangeError { get; } = "urn:document:fss-sedo-judicial-restriction-reply-exchange-error";
+            /// <summary>
+            /// Ошибка обработки
+            /// </summary>
+            public static DocumentType ErrorMessage { get; } = "urn:document:fss-sedo-judicial-restriction-reply-error-message";
         }
     }
 }

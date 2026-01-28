@@ -5,16 +5,19 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Kontur.Extern.Api.Client.ApiLevel.Models.Requests.Docflows;
 using Kontur.Extern.Api.Client.ApiLevel.Models.Responses.Docflows;
+using Kontur.Extern.Api.Client.Attributes;
 using Kontur.Extern.Api.Client.Models.ApiTasks;
 using Kontur.Extern.Api.Client.Models.Common;
 using Kontur.Extern.Api.Client.Models.Docflows;
 using Kontur.Extern.Api.Client.Models.Docflows.Documents;
 using Kontur.Extern.Api.Client.Models.Docflows.DocumentsRequests;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Kontur.Extern.Api.Client.ApiLevel.Clients.Docflows
 {
     [PublicAPI]
     [SuppressMessage("ReSharper", "CommentTypo")]
+    [ClientDocumentationSection]
     public interface IDocflowsClient
     {
         /// <summary>
@@ -136,6 +139,28 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.Docflows
         /// <param name="timeout"></param>
         /// <returns>Документ из документооборота или null</returns>
         Task<Document?> TryGetDocumentAsync(Guid accountId, Guid docflowId, Guid documentId, TimeSpan? timeout = null);
+
+
+        /// <summary>
+        ///  Изменение реквизитов документа требования
+        /// </summary>
+        /// <param name="accountId">Идентификатор учетной записи</param>
+        /// <param name="docflowId">Идентификатор документооборота</param>
+        /// <param name="documentId">Идентификатор документа</param>
+        /// <param name="patch">Список операций для изменения реквизитов</param>
+        /// <param name="timeout"></param>
+        /// <returns>Документ из документооборота</returns>
+        Task<Document> PatchDocumentAsync(Guid accountId, Guid docflowId, Guid documentId, JsonPatchDocument<Document> patch, TimeSpan? timeout = null);
+
+        /// <summary>
+        /// Изменение реквизитов документооборота
+        /// </summary>
+        /// <param name="accountId">Идентификатор учетной записи</param>
+        /// <param name="docflowId">Идентификатор документооборота</param>
+        /// <param name="patch">Список операций для изменения реквизитов</param>
+        /// <param name="timeout"></param>
+        /// <returns>Документооборот</returns>
+        Task<IDocflowWithDocuments> PatchDocflowAsync(Guid accountId, Guid docflowId, JsonPatchDocument<IDocflowWithDocuments> patch, TimeSpan? timeout = null);
 
         /// <summary>
         /// Получение описания документа
@@ -352,12 +377,14 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.Docflows
         /// <param name="docflowId">Идентификатор документооборота</param>
         /// <param name="certificate">Сертификат</param>
         /// <param name="timeout"></param>
+        /// <param name="machineReadableWarrantId">Идентификатор машиночитаемой доверенности</param>
         /// <returns></returns>
         Task<DocumentsRequest> GenerateDocumentsRequestAsync(
             Guid accountId,
             Guid docflowId,
             byte[] certificate,
-            TimeSpan? timeout = null);
+            TimeSpan? timeout = null,
+            Guid? machineReadableWarrantId = null);
 
         /// <summary>
         /// Отправка запроса на получение входящих документов ФСС
@@ -380,13 +407,29 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.Docflows
         /// <param name="docflowId">Идентификатор документооборота</param>
         /// <param name="requestId">Идентификатор запроса</param>
         /// <param name="signature"></param>
-        /// <param name="timeout">Сертификат</param>
+        /// <param name="timeout"></param>
         /// <returns></returns>
         Task<DocumentsRequest> UpdateDocumentsRequestSignatureAsync(
             Guid accountId,
             Guid docflowId,
             Guid requestId,
             byte[] signature,
+            TimeSpan? timeout = null);
+
+        /// <summary>
+        /// Сохранение расшифрованного контента документа
+        /// </summary>
+        /// <param name="accountId">Идентификатор учетной записи</param>
+        /// <param name="docflowId">Идентификатор документооборота</param>
+        /// <param name="documentId">Идентификатор документа</param>
+        /// <param name="request">Тело запроса</param>
+        /// <param name="timeout"></param>
+        /// <returns></returns>
+        Task<SaveDecryptedContentResult> SaveDocumentDecryptedContentAsync(
+            Guid accountId,
+            Guid docflowId,
+            Guid documentId,
+            SaveDecryptedContentRequest request,
             TimeSpan? timeout = null);
     }
 }

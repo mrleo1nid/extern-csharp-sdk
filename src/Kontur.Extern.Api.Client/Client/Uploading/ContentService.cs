@@ -32,10 +32,10 @@ namespace Kontur.Extern.Api.Client.Uploading
             var response = await contents.StartUploadAsync(accountId, stream, 0, stream.Length - 1, stream.Length, timeout).ConfigureAwait(false);
             return response.Id;
         }
-
+        
         public async Task<Guid> UploadFirstChunkAsync(Guid accountId, byte[] buffer, long from, long? totalLength, TimeSpan? timeout)
         {
-            var to = from + buffer.Length - 1;
+            var to = CalcEndForContentRange(from, buffer.Length, totalLength);
             var response = await contents.StartUploadAsync(accountId, buffer, from, to, totalLength, timeout).ConfigureAwait(false);
             return response.Id;
         }
@@ -48,8 +48,16 @@ namespace Kontur.Extern.Api.Client.Uploading
 
         private Task<UploadChunkResponse> UploadChunkAsync(Guid accountId, Guid contentId, byte[] buffer, long from, long? totalLength, TimeSpan? timeout)
         {
-            var to = from + buffer.Length - 1;
+            var to = CalcEndForContentRange(from, buffer.Length, totalLength);
             return contents.UploadChunkAsync(accountId, contentId, buffer, from, to, totalLength, timeout);
+        }
+
+        private static long CalcEndForContentRange(long from, long bufferLength, long? totalLength)
+        {
+            var minLength = totalLength is null
+                ? from + bufferLength
+                : Math.Min(from + bufferLength, totalLength.Value);
+            return minLength - 1;
         }
     }
 }

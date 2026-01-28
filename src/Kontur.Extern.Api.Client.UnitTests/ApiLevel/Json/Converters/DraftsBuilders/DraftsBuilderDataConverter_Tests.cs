@@ -17,6 +17,7 @@ using Kontur.Extern.Api.Client.UnitTests.ApiLevel.Clients.Models.TestDtoGenerato
 using Kontur.Extern.Api.Client.UnitTests.TestHelpers;
 using Kontur.Extern.Api.Client.UnitTests.TestHelpers.BogusExtensions;
 using NUnit.Framework;
+using Vostok.Logging.Console;
 
 namespace Kontur.Extern.Api.Client.UnitTests.ApiLevel.Json.Converters.DraftsBuilders
 {
@@ -29,7 +30,7 @@ namespace Kontur.Extern.Api.Client.UnitTests.ApiLevel.Json.Converters.DraftsBuil
         [SetUp]
         public void SetUp()
         {
-            serializer = JsonSerializerFactory.CreateJsonSerializer(ignoreNullValues: false);
+            serializer = JsonSerializerFactory.CreateJsonSerializer(new ConsoleLog(), ignoreNullValues: false);
             autoFaker = new AutoFakerFactory().AddDraftsBuilderEntitiesGeneration().Create();
         }
 
@@ -52,6 +53,9 @@ namespace Kontur.Extern.Api.Client.UnitTests.ApiLevel.Json.Converters.DraftsBuil
             var serializedBuilderType = jsonDocument.RootElement.GetProperty("builder-type").GetString();
             serializedBuilderType.Should().Be(builderType.ToString());
 
+            var serializedDraftOptions = jsonDocument.RootElement.GetProperty("draft-options").GetProperty("generate-warrant").GetBoolean();
+            serializedDraftOptions.Should().Be(true);
+
             var builderDataElement = jsonDocument.RootElement.GetProperty("builder-data");
             if (dataType is null)
             {
@@ -60,7 +64,7 @@ namespace Kontur.Extern.Api.Client.UnitTests.ApiLevel.Json.Converters.DraftsBuil
             else
             {
                 var dataValues = builderDataElement.EnumerateObject();
-                if (dataType != typeof(PfrReportDraftsBuilderData))
+                if (dataType != typeof (PfrReportDraftsBuilderData))
                 {
                     dataValues.Should().NotBeEmpty();
                     dataValues.Should().Contain(x => x.Value.GetRawText() != "null");
@@ -95,7 +99,8 @@ namespace Kontur.Extern.Api.Client.UnitTests.ApiLevel.Json.Converters.DraftsBuil
                     MriCode = mriCode
                 },
                 builderType,
-                (DraftsBuilderData?) autoFaker.Generate(dataType)
+                (DraftsBuilderData?)autoFaker.Generate(dataType),
+                new DraftCreateOptionsRequest {GenerateWarrant = true}
             );
             return request;
         }

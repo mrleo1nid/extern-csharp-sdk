@@ -10,6 +10,8 @@ using Kontur.Extern.Api.Client.Models.Docflows;
 using Kontur.Extern.Api.Client.Models.Docflows.Documents;
 using Kontur.Extern.Api.Client.Http;
 using Kontur.Extern.Api.Client.Models.Docflows.DocumentsRequests;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.JsonPatch.Operations;
 using Vostok.Clusterclient.Core.Model;
 
 // ReSharper disable CommentTypo
@@ -84,6 +86,16 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.Docflows
 
         public Task<Document?> TryGetDocumentAsync(Guid accountId, Guid docflowId, Guid documentId, TimeSpan? timeout = null) =>
             http.TryGetAsync<Document>($"/v1/{accountId}/docflows/{docflowId}/documents/{documentId}", timeout);
+
+        public Task<Document> PatchDocumentAsync(Guid accountId, Guid docflowId, Guid documentId, JsonPatchDocument<Document> patch, TimeSpan? timeout = null)
+        {
+            return http.PatchAsync<List<Operation<Document>>, Document>($"/v1/{accountId}/docflows/{docflowId}/documents/{documentId}", patch.Operations, timeout);
+        }
+
+        public Task<IDocflowWithDocuments> PatchDocflowAsync(Guid accountId, Guid docflowId, JsonPatchDocument<IDocflowWithDocuments> patch, TimeSpan? timeout = null)
+        {
+            return http.PatchAsync<List<Operation<IDocflowWithDocuments>>, IDocflowWithDocuments>($"/v1/{accountId}/docflows/{docflowId}", patch.Operations, timeout);
+        }
 
         public Task<DocflowDocumentDescription> GetDocumentDescriptionAsync(
             Guid accountId,
@@ -269,13 +281,14 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.Docflows
                 timeout
             );
 
-        public Task<DocumentsRequest> GenerateDocumentsRequestAsync(Guid accountId, Guid docflowId, byte[] certificate, TimeSpan? timeout = null)
+        public Task<DocumentsRequest> GenerateDocumentsRequestAsync(Guid accountId, Guid docflowId, byte[] certificate, TimeSpan? timeout = null, Guid? machineReadableWarrantId = null)
         {
             return http.PostAsync<GenerateDocumentsRequestRequest, DocumentsRequest>(
                 $"/v1/{accountId}/docflows/{docflowId}/generate-documents-request",
                 new GenerateDocumentsRequestRequest
                 {
-                    CertificateBase64 = certificate
+                    CertificateBase64 = certificate,
+                    MachineReadableWarrantId = machineReadableWarrantId
                 },
                 timeout
             );
@@ -293,6 +306,14 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.Docflows
             return http.PutAsync<byte[], DocumentsRequest>(
                 $"v1/{accountId}/docflows/{docflowId}/documents-requests/{requestId}/signature",
                 signature,
+                timeout);
+        }
+
+        public Task<SaveDecryptedContentResult> SaveDocumentDecryptedContentAsync(Guid accountId, Guid docflowId, Guid documentId, SaveDecryptedContentRequest request, TimeSpan? timeout = null)
+        {
+            return http.PutAsync<SaveDecryptedContentRequest, SaveDecryptedContentResult>(
+                $"v1/{accountId}/docflows/{docflowId}/documents/{documentId}/decrypted-content",
+                request,
                 timeout);
         }
 

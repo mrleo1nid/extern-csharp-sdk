@@ -7,13 +7,14 @@ namespace Kontur.Extern.Api.Client.Model.Drafts
 {
     public class DraftMetadata
     {
-        private readonly DraftPayer payer;
-        private readonly DraftSender sender;
-        private readonly DraftRecipient recipient;
-        private string? subject;
-        private string[]? additionalCertificates;
-        private Guid? machineReadableWarrantId;
-        private RelatedDocument? relatedDocumentRequest;
+        protected readonly DraftPayer payer;
+        protected readonly DraftSender sender;
+        protected readonly DraftRecipient recipient;
+        protected string? subject;
+        protected string[]? additionalCertificates;
+        protected Guid? machineReadableWarrantId;
+        protected RelatedDocument? relatedDocumentRequest;
+        protected DraftCreateOptionsRequest? draftCreateOptions;
 
         public DraftMetadata(DraftPayer payer, DraftSender sender, DraftRecipient recipient)
         {
@@ -55,6 +56,13 @@ namespace Kontur.Extern.Api.Client.Model.Drafts
             return this;
         }
 
+        public DraftMetadata WithGenerateWarrant(bool generateWarrant)
+        {
+            draftCreateOptions ??= new DraftCreateOptionsRequest();
+            draftCreateOptions.GenerateWarrant = generateWarrant;
+            return this;
+        }
+
         public DraftMetaRequest ToRequest()
         {
             AdditionalInfoRequest? additionalInfoRequest = null;
@@ -74,7 +82,8 @@ namespace Kontur.Extern.Api.Client.Model.Drafts
                 Sender = sender.ToRequest(),
                 Recipient = recipient.ToRequest(),
                 AdditionalInfo = additionalInfoRequest,
-                RelatedDocument = relatedDocumentRequest
+                RelatedDocument = relatedDocumentRequest,
+                DraftOptions = draftCreateOptions
             };
         }
     }

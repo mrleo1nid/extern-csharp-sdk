@@ -114,18 +114,94 @@ namespace Kontur.Extern.Api.Client.Models.Docflows.Enums
         /// Справка о расчетах ФСС
         /// </summary>
         public static readonly DocflowType FssSedoBillingInformation = "urn:docflow:fss-sedo-billing-information";
+
         /// <summary>
         /// Уведомление о прекращении отпуска по уходу за ребенком до полутора лет
         /// </summary>
         public static readonly DocflowType FssSedoBabyCareVacationCloseNotice = "urn:docflow:fss-sedo-baby-care-vacation-close-notice";
+
+        /// <summary>
+        /// Заявление о возмещении расходов на оплату дополнительных выходных дней для ухода за детьми-инвалидами
+        /// </summary>
+        public static readonly DocflowType FssSedoDisabilityChildrenDemand = "urn:docflow:fss-sedo-disability-children-demand";
         /// <summary>
         /// Уведомление о статусе выплаты пособия
         /// </summary>
         public static readonly DocflowType FssSedoBenefitPaymentStatusNotice = "urn:docflow:fss-sedo-benefit-payment-status-notice";
 
         /// <summary>
+        /// Уведомление о непоступлении ответа на запрос в срок
+        /// </summary>
+        public static readonly DocflowType FssSedoProactiveExpireNotice = "urn:docflow:fss-sedo-proactive-expire-notice";
+
+        /// <summary>
         /// Сведения о зарплате сотрудника
         /// </summary>
         public static readonly DocflowType FssSedoEmployeeSalaryInformation = "urn:docflow:fss-sedo-employee-salary-information";
+
+        /// <summary>
+        /// Ответ страхователя на обращение СФР
+        /// </summary>
+        public static readonly DocflowType FssSedoAppealReply = "urn:docflow:fss-sedo-appeal-reply";
+
+        /// <summary>
+        /// Обращение СФР к страхователю
+        /// </summary>
+        public static readonly DocflowType FssSedoAppeal = "urn:docflow:fss-sedo-appeal";
+
+        /// <summary>
+        /// Подтверждение основного вида экономической деятельности на СЭДО
+        /// </summary>
+        public static readonly DocflowType FssSedoOvedConfirmation = "urn:docflow:fss-sedo-oved-confirmation";
+
+        /// <summary>
+        /// Широковещательное сообщение СЭДО от СФР
+        /// </summary>
+        public static readonly DocflowType FssSedoBroadcastMessage = "urn:docflow:fss-sedo-broadcast-message";
+
+        /// <summary>
+        /// Запрос платежных реквизитов
+        /// </summary>
+        public static readonly DocflowType FssSedoPaymentDetailsDemand = "urn:docflow:fss-sedo-payment-details-demand";
+
+        /// <summary>
+        /// Ответ на запрос платежных реквизитов
+        /// </summary>
+        public static readonly DocflowType FssSedoPaymentDetailsDemandReply = "urn:docflow:fss-sedo-payment-details-demand-reply";
+
+        /// <summary>
+        /// Заявление на оплату санаторно-курортного лечения
+        /// </summary>
+        public static readonly DocflowType FssSedoAdditionalVacationStatement = "urn:docflow:fss-sedo-additional-vacation-statement";
+
+        /// <summary>
+        /// Запрос недостающих документов для оплаты отпуска застрахованного лица
+        /// </summary>
+        public static readonly DocflowType FssSedoAdditionalVacationStatementNeedDoc = "urn:docflow:fss-sedo-additional-vacation-statement-need-doc";
+
+        /// <summary>
+        /// Направление дополнительных документов по сведениям для оплаты отпуска застрахованного лица
+        /// </summary>
+        public static readonly DocflowType FssSedoAdditionalVacationStatementDocs = "urn:docflow:fss-sedo-additional-vacation-statement-docs";
+
+        /// <summary>
+        /// Запрос регистрации/отзыва доверенности ФСС
+        /// </summary>
+        public static readonly DocflowType FssWarrantManagement = "urn:docflow:fss-warrant-management";
+
+        /// <summary>
+        /// Сведения, необходимые для исчисления страхователем первых 3 дней пособия по временной нетрудоспособности
+        /// </summary>
+        public static readonly DocflowType FssSedoProactiveSalaryNotification= "urn:docflow:fss-sedo-proactive-salary-notification";
+
+        /// <summary>
+        /// Запрос информации о судебном ограничении
+        /// </summary>
+        public static readonly DocflowType FssSedoJudicialRestriction = "urn:docflow:fss-sedo-judicial-restriction";
+
+        /// <summary>
+        /// Ответ на запрос информации о судебном ограничении
+        /// </summary>
+        public static readonly DocflowType FssSedoJudicialRestrictionReply = "urn:docflow:fss-sedo-judicial-restriction-reply";
     }
 }

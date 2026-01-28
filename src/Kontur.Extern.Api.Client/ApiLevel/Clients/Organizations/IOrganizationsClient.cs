@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
+using Kontur.Extern.Api.Client.ApiLevel.Models.Requests.Organizations.ControlUnitSubscriptions;
 using Kontur.Extern.Api.Client.ApiLevel.Models.Responses.Organizations;
+using Kontur.Extern.Api.Client.ApiLevel.Models.Responses.Organizations.ControlUnitSubscriptions;
+using Kontur.Extern.Api.Client.Attributes;
 using Kontur.Extern.Api.Client.Models.Numbers;
 
 namespace Kontur.Extern.Api.Client.ApiLevel.Clients.Organizations
 {
+    [PublicAPI]
     [SuppressMessage("ReSharper", "CommentTypo")]
+    [ClientDocumentationSection]
     public interface IOrganizationsClient
     {
         Task<OrganizationBatch> GetAllOrganizationsAsync(
@@ -21,7 +27,7 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.Organizations
         Task<Organization?> TryGetOrganizationAsync(Guid accountId, Guid orgId, TimeSpan? timeout = null);
         Task<Organization> UpdateOrganizationAsync(Guid accountId, Guid orgId, string newName, TimeSpan? timeout = null);
         Task<Organization> CreateOrganizationAsync(Guid accountId, string inn, Kpp? kpp, string name, TimeSpan? timeout = null);
-        
+
         /// <summary>
         /// Удаление организации
         /// </summary>
@@ -30,5 +36,11 @@ namespace Kontur.Extern.Api.Client.ApiLevel.Clients.Organizations
         /// <param name="timeout"></param>
         /// <returns>Возвращает true, если организация успешно удалена; false, если организации не существует.</returns>
         Task<bool> DeleteOrganizationAsync(Guid accountId, Guid orgId, TimeSpan? timeout = null);
+
+        Task<OrganizationSedoSubscriptionResponse> SearchOrganizationControlUnitSubscriptionsAsync(
+            Guid accountId,
+            Guid orgId,
+            SedoSubscriptionSearchRequest request,
+            TimeSpan? timeout = null);
     }
 }
